@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda de Bolos - Colégio Laurentino Martins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #ffd166;
+            --dark: #2c3e50;
+            --light: #fff9f0;
+            --accent: #06d6a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cake-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="white"><path d="M12 6a2 2 0 0 0 2-2c0-1-2-3-2-3S10 3 10 4a2 2 0 0 0 2 2zm-5 6c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2v1H7v-1zm13 1v-1c0-2.2-1.8-4-4-4H9c-2.2 0-4 1.8-4 4v1c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h1v1h12v-1h1c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2z"/></svg>');
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin: 0.5rem auto;
+        }
+        
+        .cakes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .cake-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .cake-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .cake-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .cake-info {
+            padding: 1.5rem;
+        }
+        
+        .cake-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .cake-emoji {
+            font-size: 2rem;
+            display: block;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .benefits {
+            background-color: var(--secondary);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .benefits-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        
+        .location {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .location-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .location-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .location-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .testimonial {
+            background-color: var(--accent);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+        }
+        
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-family: 'Satisfy', cursive;
+            font-size: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .cta {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .cake-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cake-bg"></div>
+        <div class="header-content">
+            <h1>Venda de Bolos</h1>
+            <p class="tagline">No Colégio Laurentino Martins</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <p>Os sabores mais deliciosos estão mais perto do que você imagina! 🎂</p>
+            <p>Está sentindo aquele cheirinho irresistível de bolo saindo do forno? Então você encontrou o lugar certo! No Colégio Laurentino Martins, a nossa venda especial de bolos chegou para adoçar seu dia.</p>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Temos bolos para todos os gostos</h2>
+            <div class="cakes">
+                <div class="cake-card">
+                    <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="cake-info">
+                        <h3 class="cake-name">Chocolate Cremoso</h3>
+                        <span class="cake-emoji">🍫</span>
+                    </div>
+                </div>
+                
+                <div class="cake-card">
+                    <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="cake-info">
+                        <h3 class="cake-name">Baunilha com Recheio de Morango</h3>
+                        <span class="cake-emoji">🍓</span>
+                    </div>
+                </div>
+                
+                <div class="cake-card">
+                    <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="cake-info">
+                        <h3 class="cake-name">Cenoura com Cobertura de Brigadeiro</h3>
+                        <span class="cake-emoji">🥕</span>
+                    </div>
+                </div>
+                
+                <div class="cake-card">
+                    <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="cake-info">
+                        <h3 class="cake-name">Prestígio (chocolate + coco)</h3>
+                        <span class="cake-emoji">🥥</span>
+                    </div>
+                </div>
+                
+                <div class="cake-card">
+                    <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="cake-info">
+                        <h3 class="cake-name">Leite Ninho com Nutella</h3>
+                        <span class="cake-emoji">😍</span>
+                    </div>
+                </div>
+                
+                <div class="cake-card">
+                    <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="cake-info">
+                        <h3 class="cake-name">Red Velvet com Cream Cheese</h3>
+                        <span class="cake-emoji">❤️</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="benefits">
+            <h2 class="section-title">Por que escolher nossos bolos?</h2>
+            <ul class="benefits-list">
+                <li>Feitos com ingredientes frescos e selecionados</li>
+                <li>Preparados com carinho por nossos alunos e equipe</li>
+                <li>Ideais para o recreio, lanche da tarde ou levar para casa</li>
+            </ul>
+        </section>
+        
+        <section class="location">
+            <h2 class="section-title">Onde encontrar?</h2>
+            <div class="location-details">
+                <div class="location-item">
+                    <div class="location-icon">📍</div>
+                    <h3>Local</h3>
+                    <p>Pátio do Colégio Laurentino Martins</p>
+                </div>
+                
+                <div class="location-item">
+                    <div class="location-icon">⏰</div>
+                    <h3>Horário</h3>
+                    <p>Todos os dias no intervalo</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonial">
+            <p class="quote">Uma mordida e você vai se apaixonar!</p>
+            <p>Apoie nosso projeto e ainda aproveite essas delícias caseiras.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Colégio Laurentino Martins - Venda de Bolos</p>
+        <p class="cta">Venha experimentar nossas delícias!</p>
+    </footer>
+
+    <script>
+        // Simple animation for cake cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cakeCards = document.querySelectorAll('.cake-card');
+            
+            function checkScroll() {
+                cakeCards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight * 0.9) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                    }
+                });
+            }
+            
+            // Initial styles
+            cakeCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Check on load and scroll
+            checkScroll();
+            window
